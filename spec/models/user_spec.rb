@@ -98,5 +98,23 @@ describe User do
     end
 
   end
+  
+  describe "token validation"  do
+    
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+    
+    it "should be invalid if token is less than 32 characters" do
+      @user.token = "a" * 31
+      @user.should be_invalid
+    end
+    
+    it "should be invalid if token is more than 32 characters" do
+      @user.token = "a" * 35
+      @user.should be_invalid
+    end
+    
+  end
 
 end

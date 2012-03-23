@@ -2,7 +2,7 @@
 
 def create_visitor
   @visitor ||= { :email => "example@example.com",
-    :password => "please", :password_confirmation => "please" }
+    :password => "please", :password_confirmation => "please", :token => "0b1d42561284289324ae285a1c7defcc" }
 end
 
 def find_user
@@ -123,6 +123,12 @@ end
 When /^I edit my account details$/ do
   click_link "Edit account"
   fill_in "Current password", :with => @visitor[:password]
+  click_button "Update"
+end
+
+When /^I add my pivotal token$/ do
+  click_link "Edit account"
+  fill_in "Token", :with => @visit[:token]
   click_button "Update"
 end
 
