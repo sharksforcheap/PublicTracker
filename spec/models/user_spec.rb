@@ -115,6 +115,9 @@ describe User do
       @user.should be_invalid
     end
     
+    it "should be valid if token is 32 characters" do
+      @user.token = "a" * 32
+      @user.should be_valid
+    end  
   end
-
 end

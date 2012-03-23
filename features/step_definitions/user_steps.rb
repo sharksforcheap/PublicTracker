@@ -128,7 +128,8 @@ end
 
 When /^I add my pivotal token$/ do
   click_link "Edit account"
-  fill_in "Token", :with => @visit[:token]
+  fill_in "Token", :with => @visitor[:token]
+  fill_in "Current password", :with => @visitor[:password]
   click_button "Update"
 end
 

@@ -19,10 +19,10 @@ gem "haml-rails"
 gem "devise"
 group :development, :test do
   gem 'rspec-rails'
-  gem 'jasmine'
   gem "headless"
-  gem 'capybara'
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'jasmine'
 end
 
 group :development do
@@ -35,4 +35,3 @@ group :test do
   gem "email_spec"
   gem 'factory_girl_rails'
 end
-
