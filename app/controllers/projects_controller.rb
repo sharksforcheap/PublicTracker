@@ -14,5 +14,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project = current_user.projects.build(params[:project])
+    if @project.save
+      flash[:notice] = "Project Created!"
+      redirect_to project_path(@project)
+    else
+      render 'projects/new'
+    end
+    
+    def show
+      
+    end
   end
 end

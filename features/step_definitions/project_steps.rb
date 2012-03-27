@@ -73,5 +73,5 @@ Then /^I should be redirected to the \/settings page with a notice to enter a to
 end
 
 Then /^I should see a successful message$/ do
-  page.should have_content "Please enter a PivotalTracker API Token"
+  page.should have_content "Project Created!"
 end
