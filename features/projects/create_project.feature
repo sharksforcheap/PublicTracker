@@ -6,12 +6,12 @@ Feature: Create project
     Background:
       Given I am logged in
 
-    Scenario: User creates a new project 
+    Scenario: User creates a new project without valid token
       Given I have not already entered a valid token
-      When I try to create a project
+      When I try to go to the new project page
       Then I should be redirected to the /settings page with a notice to enter a token
       
-    Scenario: User creates a new project 
+    Scenario: User creates a new project with valid token
       Given I have already entered a valid token
       When I try to create a project
       Then I should see a successful message
