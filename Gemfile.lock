@@ -33,6 +33,7 @@ GEM
     auto_tagger (0.2.3)
       capistrano (>= 2.5.3)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.0.1)
     builder (3.0.0)
     capistrano (2.11.2)
       highline
@@ -93,6 +94,8 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    happymapper (0.4.0)
+      libxml-ruby (~> 2.0)
     headless (0.2.2)
     heroku (2.21.3)
       launchy (>= 0.3.2)
@@ -115,6 +118,7 @@ GEM
     json (1.6.5)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    libxml-ruby (2.3.2)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -132,6 +136,15 @@ GEM
     nokogiri (1.5.2)
     orm_adapter (0.0.6)
     pg (0.13.2)
+    pivotal-tracker (0.5.1)
+      builder
+      builder
+      happymapper (>= 0.3.2)
+      happymapper (>= 0.3.2)
+      nokogiri (>= 1.4.3)
+      nokogiri (~> 1.4)
+      rest-client (~> 1.6.0)
+      rest-client (~> 1.6.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -185,6 +198,9 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
+    simple_form (2.0.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -209,6 +225,7 @@ PLATFORMS
 
 DEPENDENCIES
   auto_tagger (= 0.2.3)
+  bootstrap-sass
   bundler
   capybara
   coffee-rails (~> 3.2.1)
@@ -224,8 +241,10 @@ DEPENDENCIES
   jasmine
   jquery-rails
   pg
+  pivotal-tracker
   rails (= 3.2.1)
   rr
   rspec-rails
   sass-rails (~> 3.2.3)
+  simple_form
   uglifier (>= 1.0.3)

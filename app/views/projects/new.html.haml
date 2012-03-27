@@ -1,2 +1,14 @@
-%h1 Projects#new
-%p Find me in app/views/projects/new.html.haml
+%h2 Add a Project
+= form_for @project, :html => { :class => 'form-horizontal' } do |f|
+  %fieldset
+    %legend You're just a few clicks away from greatness!
+    .control-group
+      =f.label :name, :class => 'control-label'
+      .controls
+        =f.text_field :name
+    .control-group
+      = f.label :pt_project_id, "Public Project Name", :class => 'control-label'
+      .controls
+        =f.select :pt_project_id, options_from_collection_for_select(@projects, "id", "name")
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
