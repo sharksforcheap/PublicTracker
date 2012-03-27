@@ -1,4 +1,33 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{user.email}
+-if user_signed_in? && current_user.token
+  %h3 
+    Welcome
+    =current_user.email
+  .projects
+    %h4 Here are all your Tracker projects!
+    %hr
+    -@projects.each do |project|
+      %p
+        %strong Name:
+        =project.name
+      %p
+        %strong Velocity:
+        =project.current_velocity
+      %p
+        %strong Owner Account:
+        =project.account
+      %p
+        %strong Project ID:
+        =project.id
+      %p
+        %strong Stories:
+        %ul
+        -project.stories.all.each do |story|
+          %li
+            =story.name
+            -if !story.labels.nil?
+              -if story.labels.include?("public")
+                %strong PUBLIC
+          -if !story.description.blank?
+            %ul
+              %li=story.description
+      %hr

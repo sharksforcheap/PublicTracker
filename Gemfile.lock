@@ -93,6 +93,8 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    happymapper (0.4.0)
+      libxml-ruby (~> 2.0)
     headless (0.2.2)
     heroku (2.21.3)
       launchy (>= 0.3.2)
@@ -115,6 +117,7 @@ GEM
     json (1.6.5)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    libxml-ruby (2.3.2)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -132,6 +135,15 @@ GEM
     nokogiri (1.5.2)
     orm_adapter (0.0.6)
     pg (0.13.2)
+    pivotal-tracker (0.5.1)
+      builder
+      builder
+      happymapper (>= 0.3.2)
+      happymapper (>= 0.3.2)
+      nokogiri (>= 1.4.3)
+      nokogiri (~> 1.4)
+      rest-client (~> 1.6.0)
+      rest-client (~> 1.6.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -224,6 +236,7 @@ DEPENDENCIES
   jasmine
   jquery-rails
   pg
+  pivotal-tracker
   rails (= 3.2.1)
   rr
   rspec-rails
