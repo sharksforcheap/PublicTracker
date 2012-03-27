@@ -20,6 +20,9 @@
           .nav-collapse
             %ul.nav
               %li= link_to "Projects", projects_path
+            %ul.nav.pull-right
+              = render 'devise/menu/registration_items'
+              = render 'devise/menu/login_items'
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}

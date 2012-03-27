@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  def index
+    @projects = current_user.projects.all
+  end
   def new
     @project = Project.new
     if current_user.token == nil
@@ -21,9 +24,9 @@ class ProjectsController < ApplicationController
     else
       render 'projects/new'
     end
+  end
     
-    def show
-      
-    end
+  def show
+    @project = current_user.projects.find(params[:id])
   end
 end
