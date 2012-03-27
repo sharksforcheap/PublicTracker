@@ -47,7 +47,8 @@ end
 ### GIVEN ###
 
 Given /^I have not already entered a valid token$/ do
-  @visitor = @visitor.merge(:token => nil)
+  @user.token = nil
+  @user.save
 end
 
 Given /^I have already entered a valid token$/ do
