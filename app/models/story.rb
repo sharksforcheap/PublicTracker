@@ -2,12 +2,12 @@ class Story < ActiveRecord::Base
   belongs_to :project
   # callback to set count
   
-  def populate_stories(project_id, pt_project_id)
+  def self.populate_stories(project_id, current_user)
     @project_id = project_id
-    @pt_project_id = pt_project_id
+    @pt_project_id = Project.find(project_id).pt_project_id
     PivotalTracker::Client.token = current_user.token
-    @project = PivotalTracker::Project.find(pt_project_id) 
-    @eligible_stories = @project.stories.all(:label => 'public', :story_type => ['feature'])
+    @pt_project_obj = PivotalTracker::Project.find(@pt_project_id) 
+    @eligible_stories = @pt_project_obj.stories.all(:label => 'public', :story_type => ['feature'])
     @eligible_stories.each do |story|
       current_story = Story.find_or_create_by_pt_story_id(story.id)
       current_story.project_id = @project_id

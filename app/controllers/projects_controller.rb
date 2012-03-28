@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(params[:project])
     if @project.save
-      
+      Story.populate_stories(@project.id, current_user)
       flash[:notice] = "Project Created!"
       redirect_to project_path(@project)
     else
@@ -29,5 +29,6 @@ class ProjectsController < ApplicationController
     
   def show
     @project = current_user.projects.find(params[:id])
+    @stories = @project.stories
   end
 end
