@@ -1,5 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :project
+  after_create :set_count_to_zero
+  
   # callback to set count
   
   def self.populate_stories(project_id, current_user)
@@ -18,7 +20,14 @@ class Story < ActiveRecord::Base
     end
   end
   
-  # def set_count
-  #   count = 0
-  # end
+    def set_count_to_zero
+      self.count = 0
+      self.save
+    end
+    
+    def upvote
+      self.count += 1
+      self.save
+    end
+  
 end

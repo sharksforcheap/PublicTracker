@@ -1,4 +1,8 @@
 %h1=@project.name
 %ul
   -@stories.each do |story|
-    %li= story.name
+    %li
+      = link_to "↑", "upvote/#{story.id}"
+      = story.count
+      |
+      = story.name

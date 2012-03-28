@@ -1,3 +1,4 @@
+= "Please enter your Pivotal Tracker token to start adding projects" unless current_user.token
 -@projects.each do |project|
   %p
     %strong=link_to project.name, project_path(project)

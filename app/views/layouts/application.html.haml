@@ -16,17 +16,22 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} PublicTracker
+          -if !signed_in?
+            =link_to "PublicTracker", root_path, :class => "brand"
+          -else
+            =link_to "PublicTracker", projects_path, :class => "brand"
           .nav-collapse
             %ul.nav
-              %li= link_to "Projects", projects_path
+              -if signed_in?
+                %li= link_to "Projects", projects_path
+                %li= link_to  "Add a new Project", new_project_path
             %ul.nav.pull-right
               = render 'devise/menu/registration_items'
               = render 'devise/menu/login_items'
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-          %a.close{"data-dismiss" => "alert"} ×
+          %a.close{"xdata-dismiss" => "alert"} ×
           = msg
       .row
         .span3
