@@ -18,8 +18,14 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.build(params[:project])
+    pt_name = PivotalTracker::Project.all.find(@project.pt_project_id).first.name
+   
     if @project.save
       Story.populate_stories(@project.id, current_user)
+       if @project.stories.empty?
+          @project.destroy
+          redirect_to projects_path, notice: "No public stories in #{pt_name.inspect}. Import aborted" and return
+        end
       flash[:notice] = "Project Created!"
       redirect_to project_path(@project) 
     else
@@ -34,12 +40,33 @@ class ProjectsController < ApplicationController
     @stories = @project.stories.sort
   end
   
+  def edit
+    @project = current_user.projects.find(params[:id])
+  end
+  
+  def update
+    @project = current_user.projects.find(params[:id])
+    if @project.update_attributes(params[:project])
+      redirect_to projects_path, notice: 'project was successfully updated.'
+    else
+      render action: "edit" 
+    end
+  end
+  
+  def destroy
+    @project = current_user.projects.find(params[:id])
+    @project.destroy
+    redirect_to projects_url
+  end
+  
+  def add_token
+    current_user.update_attribute(:token, params[:token])
+    redirect_to new_project_path
+  end
+  
   def upvote
-    
     story = Story.find(params[:id])
-    
     session[:voting] ||= {}
-
     unless session[:voting][story.id]
       story.upvote
       session[:voting][story.id] = true

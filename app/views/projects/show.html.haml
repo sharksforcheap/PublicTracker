@@ -6,3 +6,8 @@
       = story.count
       |
       = story.name
+      -unless story.description.blank?
+        %ul 
+          %li
+            = story.description 
+        
