@@ -1,4 +1,19 @@
-= "Please enter your Pivotal Tracker token to start adding projects" unless current_user.token
--@projects.each do |project|
-  %p
-    %strong=link_to project.name, project_path(project)
+-if !current_user.token
+  Please enter your
+  = link_to "Pivotal Tracker token", "https://www.pivotaltracker.com/profile" 
+  to start adding projects
+  = form_tag("/add_token", :method => "get") do
+    = text_field_tag(:token)
+    = submit_tag("Add")
+-elsif current_user.projects.count == 0
+  No current projects, why not 
+  = link_to "add one", new_project_path
+-else
+  %h1 Current Projects
+  -@projects.each do |project|
+    %p
+      %td
+        %h3= link_to project.name, project_path(project) 
+      %td= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini btn-info' 
+      %td= link_to 'Destroy', project, :confirm => 'You sure?', :method => :delete, :class => 'btn btn-mini btn-danger'
+      
